@@ -1,26 +1,26 @@
 from fastapi import FastAPI
-from backend.api.function import bookroom as call_bookroom
+from backend.api.function import BookRoom as Call_BookRoom
 
 app = FastAPI()
 
 
-@app.get("/")
+@app.get('/')
 def read_root():
-    return {"message": "Hello, FastAPI!"}
+    return {'message': "Hello, FastAPI!"}
 
 
-@app.get('/bookroom')
+@app.get('/BookRoom')
 
-def bookroom():
-    firstn= 'null'
-    lastn = 'null'
-    email = 'null'
-    day = 3
-    starthour = 9
-    startmin = 00
-    startap = 'pm'
-    endhour = 10
-    endmin = 00
+def BookRoom():
+    Firstn= 'null'
+    Lastn = 'null'
+    Email = 'null'
+    Day = 3
+    StartHour = 9
+    StartMin = 00
+    StartAP = 'pm'
+    EndHour = 10
+    EndMin = 00
     
-    callreturn = call_bookroom(firstn, lastn, email, day, starthour, startmin, startap, endhour, endmin)
-    return {"bookroom": callreturn}
+    callreturn = Call_BookRoom(Firstn, Lastn, Email, Day, StartHour, StartMin, StartAP, EndHour, EndMin)
+    return {'BookRoom': callreturn}
