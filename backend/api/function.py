@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 chrome_options = Options()
 chrome_options.add_argument("--disable-extensions")
@@ -8,10 +7,8 @@ chrome_options.add_argument("--disable-gpu")
 chrome_options.add_argument("--headless=new")
 
 import time
-import sys
 
-
-def bookroom(firstn, lastn, email, day, starthour, startmin, startap, endhour, endmin):
+def BookRoom(firstn, lastn, email, day, starthour, startmin, startap, endhour, endmin):
     
     noBookRoomList = [113,116] #list of all rooms that should not be booked
     room = 110 #lowest room number
@@ -35,10 +32,7 @@ def bookroom(firstn, lastn, email, day, starthour, startmin, startap, endhour, e
             print(f'Trying room {room} now')
             #selects time and location
             div_element = driver.find_element(By.CSS_SELECTOR, f'[title*="{starthour}:{startmin}{startap}"][title*="{room}"]')
-
-            if room in noBookRoomList:
-                roomError = 10/0
-                
+ 
             div_element.click()
             
             print('Start Time Button clicked')
@@ -74,19 +68,14 @@ def bookroom(firstn, lastn, email, day, starthour, startmin, startap, endhour, e
             #finalsubmit_element.click()
 
             print('Submited')
+            
             return 'sucess'
             
             driver.close()
-            #sys.exit() cause fastapi to quit
 
-        except Exception as httperror:
-            #print(f'error: room {room} not available')
-
+        except:
             room += 1 #addes one to the room number intel room is booked
 
             if room >= 337: #stops program when last room is reached
                 return 'fail'
                 driver.close()
-                #sys.exit() cause fastapi to quit
-            
-            #return httperror
