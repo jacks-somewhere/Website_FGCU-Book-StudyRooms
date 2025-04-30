@@ -8,12 +8,11 @@ chrome_options.add_argument("--headless=new")
 
 import time
 
-def BookRoom(firstn, lastn, email, day, starthour, startmin, startap, endhour, endmin):
+def BookRoom(firstn, lastn, email, day, starthour, startmin, startap, endhour, endmin, endap):
     
     noBookRoomList = [113,116] #list of all rooms that should not be booked
     room = 110 #lowest room number
-
-
+    
     driver = webdriver.Chrome(options=chrome_options)
     driver.get('https://fgcu.libcal.com/r/new/availability?lid=1191&zone=0&gid=0&capacity=1')
     print(driver.title)
@@ -38,7 +37,7 @@ def BookRoom(firstn, lastn, email, day, starthour, startmin, startap, endhour, e
             print('Start Time Button clicked')
 
             #selects end time
-            drop_element = driver.find_element(By.CSS_SELECTOR, f'[value*="{endhour}:{endmin}:00"]')
+            drop_element = driver.find_element(By.CSS_SELECTOR, f'[title*="{endhour}:{endmin}{endap}"]')
             drop_element.click()
             print('Drop Down Button clicked')
 
@@ -79,3 +78,4 @@ def BookRoom(firstn, lastn, email, day, starthour, startmin, startap, endhour, e
             if room >= 337: #stops program when last room is reached
                 return 'fail'
                 driver.close()
+    
