@@ -1,5 +1,5 @@
-# Website version of FGCU Book Study Room Program
-Check out FGCU-Book-StudyRooms for information about the program
+# Website Version of FGCU Book Study Rooms Program
+Check out FGCU-Book-StudyRooms at https://github.com/jacks-somewhere/FGCU-Book-StudyRooms for more information about this program.
 
 ## Scope
 The goal of this project to is build on fgcu-studyrooms project and create a frontend. The website will provide a location where users can book a study room or schedule a booking for latter without having to navigating directly to the fgcu website.
